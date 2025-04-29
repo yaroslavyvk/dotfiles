@@ -1,50 +1,49 @@
-# -----  Login / non-interactive  ---------------------------------
-export ZDOTDIR="$HOME/.config/zsh"
+#  Interactive shell only – exit early for scripts
+[[ $- != *i* ]] && return
 
-# ⏩ PATH і менеджери версій
-typeset -U path
-export PNPM_HOME="$XDG_DATA_HOME/pnpm"
+# -------------- Paths & versions ---------------------------
+: ${XDG_DATA_HOME:=$HOME/.local/share}             # XDG fallback
+
+typeset -U path                                    # keep entries unique
 path=(
   $HOME/.local/bin
   $PNPM_HOME
-  $path
+  $path                                            # keep system PATH
 )
-# Змінні оточення
-#export PATH="$HOME/.cargo/bin:$PATH"
-#export PATH="$HOME/.local/bin:$PATH"
 
-#eval "$(fnm env --use-on-cd --corepack-enabled --shell zsh)"
-
-
-# 🗄  локальні доповнення
-[[ -f $ZDOTDIR/local/zprofile.local ]] && source $ZDOTDIR/local/zprofile.local
-# -----  Основне оточення  ----------------------------------------
-# Історія
+# ---------------- History -----------------------------------
 export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=10000 SAVEHIST=10000
 setopt INC_APPEND_HISTORY SHARE_HISTORY HIST_REDUCE_BLANKS \
        HIST_SAVE_NO_DUPS HIST_FIND_NO_DUPS EXTENDED_HISTORY
 
-# Зручності
+# -------------- Quality-of-life -----------------------------
 setopt AUTO_CD EXTENDED_GLOB
-bindkey -e                     # emacs-режим редагування
-typeset -a precmd_functions
-precmd_functions+=(set-tab-title)
-set-tab-title() { print -Pn "\e]0;${PWD:t}\a" }
+bindkey -e                                          # Emacs keymap
+precmd() { print -Pn "\e]0;${PWD:t}\a" }            # tab title
 
-# ----  Oh My Zsh (якщо хочеш лишити)  ----------------------------
-export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="robbyrussell"
-plugins=(git docker kube-ps1 zsh-autosuggestions zsh-syntax-highlighting)
-source $ZSH/oh-my-zsh.sh
+# ---------------- Oh-My-Zsh ---------------------------------
+if [[ -d "$HOME/.oh-my-zsh" ]]; then
+  export ZSH="$HOME/.oh-my-zsh"
+  ZSH_THEME="robbyrussell"
+  plugins=(git docker kube-ps1)                     # core plugins
+  source $ZSH/oh-my-zsh.sh
+fi
 
-# ----  Плагіни, що не йдуть через OMZ  ---------------------------
-# source "$BREW_PREFIX/opt/fzf/shell/key-bindings.zsh"   # ⇠ додай, якщо треба
-# source $ZDOTDIR/plugins.d/fast-syntax-highlighting.zsh
+# External plugins – load **after** OMZ
+if [[ -d "$HOME/.zsh-plugins" ]]; then
+  source "$HOME/.zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  source "$HOME/.zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi
 
-# ----  Імпорт підфайлів  -----------------------------------------
-source $ZDOTDIR/aliases.zsh
-source $ZDOTDIR/completion.zsh
+# ---------------- Basics ------------------------------------
+export EDITOR="${EDITOR:-nvim}"
+export DOTFILES="$HOME/.dotfiles"
 
-# ----  Коли входиш без tmux  -------------------------------------
-[[ -z $TMUX ]] && exec tmux
+source "$ZDOTDIR/aliases.zsh"
+source "$ZDOTDIR/completion.zsh"
+
+# ---------------- Tmux auto-start ---------------------------
+if command -v tmux >/dev/null && [[ -z $TMUX ]] && [[ $TERM != "dumb" ]]; then
+  exec tmux
+fi
