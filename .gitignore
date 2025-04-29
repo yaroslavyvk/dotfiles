@@ -1,9 +1,10 @@
 tmux*.log
 
+.stow-local-ignore
 .config/nvim/spell/*.spl
 .config/nvim/lua/packer_compiled.lua
 
-.config/zsh/zprofile.local
+.config/zsh/local/
 .config/zsh/zsh_history
 .config/zsh/.zsh_history
 .config/zsh/.zcompdump*
