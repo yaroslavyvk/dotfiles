@@ -12,6 +12,7 @@ tmux*.log
 .config/zsh/.zinit
 .config/zsh/.zsh_sessions
 
+.config/tmux/plugins/
 
 .config/git/config-scoro
 
