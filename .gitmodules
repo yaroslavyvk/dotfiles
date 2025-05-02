@@ -1,3 +1,27 @@
 [submodule ".config/nvim"]
 	path = .config/nvim
 	url = https://github.com/yaroslavyvk/nvim-config.git
+[submodule "tmux/.config/tmux/plugins/tpm"]
+	path = tmux/.config/tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
+[submodule "tmux/.config/tmux/plugins/tmux-resurrect"]
+	path = tmux/.config/tmux/plugins/tmux-resurrect
+	url = https://github.com/tmux-plugins/tmux-resurrect
+[submodule "tmux/.config/tmux/plugins/tmux-continuum"]
+	path = tmux/.config/tmux/plugins/tmux-continuum
+	url = https://github.com/tmux-plugins/tmux-continuum
+[submodule "tmux/.config/tmux/plugins/tmux-sensible"]
+	path = tmux/.config/tmux/plugins/tmux-sensible
+	url = https://github.com/tmux-plugins/tmux-sensible
+[submodule "tmux/.config/tmux/plugins/tmux-fzf-url"]
+	path = tmux/.config/tmux/plugins/tmux-fzf-url
+	url = https://github.com/tmux-plugins/tmux-fzf-url
+[submodule "tmux/.config/tmux/plugins/tmux-thumbs"]
+	path = tmux/.config/tmux/plugins/tmux-thumbs
+	url = https://github.com/tmux-plugins/tmux-thumbs
+[submodule "tmux/.config/tmux/plugins/tmux-yank"]
+	path = tmux/.config/tmux/plugins/tmux-yank
+	url = https://github.com/tmux-plugins/tmux-yank
+[submodule "tmux/.config/tmux/plugins/catppuccin-tmux"]
+	path = tmux/.config/tmux/plugins/catppuccin-tmux
+	url = https://github.com/catppuccin/tmux

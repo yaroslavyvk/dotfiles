@@ -49,9 +49,17 @@
     selected = normal
     separator = red bold
     linenumber = normal
+[alias]
+    lg = "git log --graph --pretty=format:'%C(yellow)%h%C(reset) -%C(auto)%d%C(reset) %s %C(green)(%cr)%C(reset)'"
+    st = status
+    br = branch
+    ci = commit
+    sw = switch
+    co = checkout
 [core]
-	excludesfile = $HOME/.gitignore_global
-	quotepath = false
+    excludesfile = $HOME/.gitignore_global
+    quotepath = false
+    pager = 
+    editor = nvim
 [include]
     path = ~/.gitconfig-private
-
