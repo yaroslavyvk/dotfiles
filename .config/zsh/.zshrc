@@ -40,6 +40,7 @@ fi
 export EDITOR="${EDITOR:-nvim}"
 export DOTFILES="$HOME/.dotfiles"
 
+
 source "$ZDOTDIR/aliases.zsh"
 source "$ZDOTDIR/completion.zsh"
 

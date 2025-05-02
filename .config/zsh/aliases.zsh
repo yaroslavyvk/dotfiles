@@ -10,9 +10,6 @@ alias down='docker compose down'
 alias build='docker compose build'
 alias logs='docker compose logs --follow'
 
-# Git – pretty graph
-alias glog="git log --graph --pretty=format:'%C(yellow)%h%C(reset) -%C(auto)%d%C(reset) %s %C(green)(%cr)%C(reset)'"
-
 # Modern ls (only if eza is installed)
 if command -v eza >/dev/null; then
   alias ls='eza --group-directories-first'
