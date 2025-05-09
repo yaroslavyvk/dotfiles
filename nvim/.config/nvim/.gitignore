@@ -1,0 +1,14 @@
+*.luac
+
+*.swp
+*.swo
+*.swn
+*~
+
+/session/
+*.session
+*.log
+
+node_modules/
+venv/
+target/
