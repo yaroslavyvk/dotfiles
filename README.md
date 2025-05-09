@@ -3,12 +3,12 @@
 This repository contains my personal configuration files for setting up a Unix-like development environment.
 
 ## Included so far
-	•	Zsh configuration
-	•	Tmux configuration
-	•	Neovim 
-	•	Git configuration
-	•	Atuin shell history
-	•	WezTerm terminal
+- Zsh configuration
+- Tmux configuration
+- Neovim
+- Git configuration
+- Atuin shell history
+- WezTerm terminal
 
 ## Status
 
