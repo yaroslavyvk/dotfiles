@@ -63,3 +63,5 @@
     editor = nvim
 [include]
     path = ~/.gitconfig-private
+[credential]
+	helper = store

@@ -10,6 +10,14 @@ alias down='docker compose down'
 alias build='docker compose build'
 alias logs='docker compose logs --follow'
 
+# Dirs
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+
+
 # Modern ls (only if eza is installed)
 if command -v eza >/dev/null; then
   alias ls='eza --group-directories-first'
@@ -23,6 +31,11 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search
 bindkey "^[[B" down-line-or-beginning-search
+
+
+# -------------- Atuin ------------------
+eval "$(atuin init zsh --disable-up-arrow)"
+bindkey '^R' atuin-search
 
 bindkey '^O' clear-screen                         # Ctrl+O → clear
 foreground-nvim() { fg %nvim }                    # Ctrl+Z → foreground nvim

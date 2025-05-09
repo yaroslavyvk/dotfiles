@@ -1,53 +1,30 @@
 return {
-  "mfussenegger/nvim-lint",
-  event = { "BufReadPost", "BufWritePost", "BufNewFile" }, -- to disable, comment this out
+  'mfussenegger/nvim-lint',
+  event = { 'BufReadPost', 'BufWritePost', 'BufNewFile' },
   config = function()
-    local lint = require("lint")
+    local lint = require 'lint'
 
-    local pattern = [[([^:]+):(\d+):(\d+): (.*)]]
-    -- local pattern = "[^:]+:(%d+):(%d+):([^%.]+%.?)%s%(([%a-]+)%)%s?%(?(%a*)%)?"
-    local groups = { 'lnum', 'col', 'message', 'code', 'severity' }
-    -- local groups = { 'file', 'line', 'start_col', 'message' },
-    local severities = {
-      [''] = vim.diagnostic.severity.ERROR,
-      ['warning'] = vim.diagnostic.severity.WARN
-    }
-
-    lint.linters.tsstandard = {
-      name = 'ts-standard',
-      cmd = 'ts-standard',
-      stdin = true,
-      args = { "--stdin" },
-      ignore_exitcode = true,
-      parser = require('lint.parser').from_pattern(
-        pattern,
-        -- { 'file', 'line', 'start_col', 'message' },
-        groups,
-        severities,
-        { ['source'] = 'ts-standard' },
-        {}
-      )
-    }
+    -- Keep built-in parser, just tweak args:
+    lint.linters.flake8.args = { '--max-line-length=88' }
+    lint.linters.flake8.stdin = true
+    lint.linters.flake8.ignore_exitcode = true
 
     lint.linters_by_ft = {
-      python = { "flake8" },
-      dockerfile = { "hadolint" },
-      yaml = { "yamllint" },
-      ["yaml.ansible"] = { "ansible_lint" },
-      terraform = { "tflint" },
+      python = { 'flake8' },
+      dockerfile = { 'hadolint' },
+      yaml = { 'yamllint' },
+      ['yaml.ansible'] = { 'ansible_lint' },
+      terraform = { 'tflint' },
     }
 
-    local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
-
-    vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
-      group = lint_augroup,
+    local aug = vim.api.nvim_create_augroup('lint', { clear = true })
+    vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
+      group = aug,
       callback = function()
         lint.try_lint()
       end,
     })
 
-    vim.keymap.set("n", "<leader>ll", function()
-      lint.try_lint()
-    end, { desc = "Trigger linting for current file" })
+    vim.keymap.set('n', '<leader>ll', lint.try_lint, { desc = 'Trigger linting' })
   end,
 }

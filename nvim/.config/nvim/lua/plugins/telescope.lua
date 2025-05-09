@@ -27,6 +27,13 @@ return {
         desc = 'Find All Files',
       },
       {
+        '<leader>sa',
+        function()
+          require('telescope.builtin').find_files { cwd = os.getenv 'HOME', hidden = true, no_ignore = true }
+        end,
+        desc = 'Find Files in Home',
+      },
+      {
         '<leader>sr',
         '<cmd>Telescope oldfiles<cr>',
         desc = 'Find Recent',

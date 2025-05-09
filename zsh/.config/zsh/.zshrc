@@ -38,11 +38,12 @@ fi
 
 # ---------------- Basics ------------------------------------
 export EDITOR="${EDITOR:-nvim}"
-export DOTFILES="$HOME/.dotfiles"
-
+export DOTFILES="$HOME/dotfiles"
+export KUBECONFIG="$HOME/.kube/config"
 
 source "$ZDOTDIR/aliases.zsh"
 source "$ZDOTDIR/completion.zsh"
+
 
 # ---------------- Tmux auto-start ---------------------------
 if command -v tmux >/dev/null && [[ -z $TMUX ]] && [[ $TERM != "dumb" ]]; then

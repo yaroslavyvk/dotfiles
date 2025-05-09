@@ -1,22 +1,20 @@
 tmux*.log
 
 .stow-local-ignore
-.config/nvim/spell/*.spl
-.config/nvim/lua/packer_compiled.lua
+nvim/.config/nvim/spell/*.spl
+nvim/.config/nvim/lua/packer_compiled.lua
 
-.config/zsh/local/
-.config/zsh/zsh_history
-.config/zsh/.zsh_history
-.config/zsh/.zcompdump*
-.config/zsh/.zcompcache
-.config/zsh/.zinit
-.config/zsh/.zsh_sessions
+zsh/.config/zsh/local/
+zsh_history
+.zsh_history
+.zcompdump*
+.zcompcache
+.zinit
+.zsh_sessions
 
-.config/tmux/plugins/
+tmux/.config/tmux/plugins/
 
 .config/git/config-scoro
-
-.config/lazygit/state.yml
 
 .netrwhist
 

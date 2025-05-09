@@ -1,31 +1,32 @@
 return {
-  "stevearc/conform.nvim",
-  event = { "BufWritePre" },
-  cmd = { "ConformInfo" },
+  'stevearc/conform.nvim',
+  event = { 'BufWritePre' },
+  cmd = { 'ConformInfo' },
   keys = {
     {
       -- Customize or remove this keymap to your liking
-      "<leader>f",
+      '<leader>f',
       function()
-        require("conform").format({
-          async = false,
+        require('conform').format {
+          async = true,
+          timeout_ms = 500,
           quiet = false,
           lsp_fallback = true,
-        })
+        }
       end,
-      mode = "",
-      desc = "Format buffer",
+      mode = '',
+      desc = 'Format buffer',
     },
   },
   -- Everything in opts will be passed to setup()
   opts = {
     -- Define your formatters
     formatters_by_ft = {
-      lua = { "stylua" },
-      python = { "isort", "black" },
-      yaml = { "yamlfmt" },
-      terraform = { "terraform_fmt" },
-      tf = { "terraform_fmt" },
+      lua = { 'stylua' },
+      python = { 'isort', 'black' },
+      yaml = { 'yamlfmt' },
+      terraform = { 'terraform_fmt' },
+      tf = { 'terraform_fmt' },
     },
     -- Set up format-on-save
     format_on_save = { timeout_ms = 500, lsp_fallback = true },
@@ -33,7 +34,13 @@ return {
     formatters = {
       injected = { options = { ignore_errors = true } },
       shfmt = {
-        prepend_args = { "-i", "2" },
+        prepend_args = { '-i', '2' },
+      },
+      black = {
+        prepend_args = { '--line-length', '88' },
+      },
+      isort = {
+        prepend_args = { '--profile', 'black' },
       },
     },
   },

@@ -1,15 +1,14 @@
 return {
-  'rmagatti/auto-session',
-  opts = {
-    -- Resize Neovim after it is started, otherwise the cmdheight might be
-    -- super large when restoring the session
-    -- https://github.com/rmagatti/auto-session/issues/64
-    -- https://github.com/neovim/neovim/issues/11330
-    post_restore_cmds = { 'silent !kill -s SIGWINCH $PPID' },
-    pre_save_cmds = { close_all_floating_windows, 'cclose' },
-    log_level = 'error',
-    session_lens = {
-      load_on_setup = false,
-    },
-  },
+  "rmagatti/auto-session",
+  config = function()
+    -- ← ensure this is set first
+    vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
+    require("auto-session").setup({
+      log_level = "error",
+      post_restore_cmds = { "silent !kill -s SIGWINCH $PPID" },
+      pre_save_cmds = { close_all_floating_windows, "cclose" },
+      session_lens = { load_on_setup = false },
+    })
+  end,
 }
