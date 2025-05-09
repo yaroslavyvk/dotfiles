@@ -1,0 +1,35 @@
+# Use fuzzy search for fast lookups
+search_mode = "fuzzy"
+
+# Filter history globally (useful across directories and sessions)
+filter_mode = "global"
+
+# Show full UI, but keep it clean
+style = "compact"
+inline_height = 15
+show_preview = true
+show_help = false
+
+# Accept command on Enter (no need to edit by default)
+enter_accept = true
+
+# Prevent secrets or sensitive data from being stored
+secrets_filter = true
+
+# Sync every 10 minutes or after each command (optional)
+auto_sync = true
+sync_frequency = "10m"
+
+# Save only useful commands in history
+history_filter = [
+  "^rm -rf .*",          # avoid risky delete commands
+]
+
+# Remove common "noise" commands from stats
+[stats]
+ignored_commands = [
+  "cd",
+  "ls",
+  "clear",
+  "history"
+]
