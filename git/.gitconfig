@@ -57,11 +57,26 @@
     sw = switch
     co = checkout
 [core]
-    excludesfile = $HOME/.gitignore_global
+    excludesfile = ~/.gitignore_global
     quotepath = false
-    pager = 
+    compression = 9
+    whitespace = error
+    preloadindex = true
+    pager =
     editor = nvim
-[includeIf "gitdir:~/code/personal/"]
+[advice]
+    addEmptyPathspec = false
+    pushNonFastForward = false
+[init]
+    defaultBranch = main
+[status]
+    branch = true
+    showStash = true
+    showUntrackedFiles = all
+
+[includeIf "gitdir:~/code/personal/**"]
     path = ~/.gitconfig-personal
-[includeIf "gitdir:~/code/work/"]
+[includeIf "gitdir:~/code/work/**"]
     path = ~/.gitconfig-work
+[credential]
+	helper = /usr/local/share/gcm-core/git-credential-manager
