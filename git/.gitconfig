@@ -61,7 +61,7 @@
     quotepath = false
     pager = 
     editor = nvim
-[include]
-    path = ~/.gitconfig-private
-[credential]
-	helper = store
+[includeIf "gitdir:~/code/personal/"]
+    path = ~/.gitconfig-personal
+[includeIf "gitdir:~/code/work/"]
+    path = ~/.gitconfig-work

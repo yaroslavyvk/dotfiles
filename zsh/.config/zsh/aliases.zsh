@@ -20,9 +20,11 @@ alias ......="cd ../../../../.."
 
 # Modern ls (only if eza is installed)
 if command -v eza >/dev/null; then
-  alias ls='eza --group-directories-first'
-  alias ll='ls -la'
+  alias ls='eza --group-directories-first --icons'
+  alias ll='eza -lh --icons'
+  alias la='eza -lha --icons'
   alias l='ls -1'
+  alias lg='eza -lh --git --icons'
 fi
 
 # -------- Keybindings --------------------------------------

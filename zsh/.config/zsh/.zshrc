@@ -6,6 +6,9 @@
 
 typeset -U path                                    # keep entries unique
 path=(
+  /opt/homebrew/bin
+  /opt/homebrew/sbin
+  $HOME/.local/share/nvim/mason/bin
   $HOME/.local/bin
   $PNPM_HOME
   $path                                            # keep system PATH
@@ -28,6 +31,7 @@ if [[ -d "$HOME/.oh-my-zsh" ]]; then
   ZSH_THEME="robbyrussell"
   plugins=(git docker kube-ps1)                     # core plugins
   source $ZSH/oh-my-zsh.sh
+  PROMPT=" $PROMPT"
 fi
 
 # External plugins – load **after** OMZ
@@ -48,4 +52,4 @@ source "$ZDOTDIR/completion.zsh"
 # ---------------- Tmux auto-start ---------------------------
 if command -v tmux >/dev/null && [[ -z $TMUX ]] && [[ $TERM != "dumb" ]]; then
   exec tmux
-fi
+ fi
