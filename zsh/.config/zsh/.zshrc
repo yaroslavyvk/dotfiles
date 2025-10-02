@@ -48,6 +48,10 @@ export KUBECONFIG="$HOME/.kube/config"
 source "$ZDOTDIR/aliases.zsh"
 source "$ZDOTDIR/completion.zsh"
 
+# --- Autojump (Homebrew) ---
+if [[ -s "$(brew --prefix)/etc/profile.d/autojump.sh" ]]; then
+  . "$(brew --prefix)/etc/profile.d/autojump.sh"
+fi
 
 # ---------------- Tmux auto-start ---------------------------
 if command -v tmux >/dev/null && [[ -z $TMUX ]] && [[ $TERM != "dumb" ]]; then
