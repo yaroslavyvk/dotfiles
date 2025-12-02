@@ -1,9 +1,9 @@
 # Shortcuts
+alias y='yazi'       # Yazi
 alias g='git'        # Git
 alias k='kubectl'    # Kubernetes
 alias d='docker'     # Docker
 alias c='clear'      # Clear screen
-alias flake="flake8 --config ~/.config/flake8"
 
 # Docker Compose
 alias up='docker compose up'

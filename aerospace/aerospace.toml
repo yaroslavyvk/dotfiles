@@ -1,0 +1,67 @@
+########################################
+#  AeroSpace — мінімальний стартовий  #
+########################################
+
+# ----- Головні налаштування -----------------------------------------------
+default-root-container-layout      = 'tiles'       # класичний тайлінг
+default-root-container-orientation = 'horizontal'  # усі вікна стають поруч
+
+[key-mapping]
+preset = 'qwerty'                                 # звична розкладка
+
+[gaps]                                            # відступи (пікселі)
+inner.horizontal = 10
+inner.vertical   = 10
+outer.left       = 10
+outer.right      = 10
+outer.top        = 182
+outer.bottom     = 10
+
+# --------------------------------------------------------------------------
+# MAIN mode — користуєшся щодня
+# --------------------------------------------------------------------------
+[mode.main.binding]
+# Фокус між вікнами (vim‑стиль)
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+
+# Переміщення вікна
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+# Зміна розміру (Shift + – / =)
+alt-shift-minus = 'resize smart -50'
+alt-shift-equal = 'resize smart +50'
+
+# Workspaces (до 4 цілком вистачає на старті)
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+
+# Перемістити вікно в інший workspace
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+
+# Швидке переключення layout'ів
+alt-minus  = 'layout horizontal'                  # усі вікна поруч (⟷)
+alt-v      = 'layout vertical'                    # усі вікна одне під одним (⇵)
+alt-f      = 'layout floating'                    # звичайний macOS‑режим
+alt-slash  = 'layout tiles horizontal vertical'   # циклом tiles → hor → ver
+
+# Увійти в service‑mode
+alt-esc = 'mode service'
+
+# --------------------------------------------------------------------------
+# SERVICE mode — рідко, коли «щось пішло не так»
+# --------------------------------------------------------------------------
+[mode.service.binding]
+esc = ['reload-config', 'mode main']              # перезавантажити конфіг і вийти
+r   = ['flatten-workspace-tree', 'mode main']     # «скинути» layout і вийти
+f   = ['layout floating tiling', 'mode main']     # toggle float/tiling і вийти
