@@ -1,5 +1,14 @@
 vim.opt.exrc = false
 vim.opt.modeline = false
+-- Use native macOS clipboard tools, including when Neovim runs inside tmux.
+if vim.fn.has "macunix" == 1 then
+  vim.g.clipboard = {
+    name = "macOS",
+    copy = { ["+"] = "/usr/bin/pbcopy", ["*"] = "/usr/bin/pbcopy" },
+    paste = { ["+"] = "/usr/bin/pbpaste", ["*"] = "/usr/bin/pbpaste" },
+    cache_enabled = 0,
+  }
+end
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.notify("Run bash work-macos/setup-nvim.sh from your dotfiles repository first", vim.log.levels.WARN)

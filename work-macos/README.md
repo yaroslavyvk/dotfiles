@@ -96,20 +96,23 @@ Check `:checkhealth`, `:LspInfo` (inside a Lua/Python file), `:Telescope find_fi
 and `:Telescope live_grep`. Python diagnostics use Pyright/Ruff; formatting is
 manual. No tests or project programs are automatically run by this profile.
 
-### Optional Robot Framework
+### System clipboard (macOS)
 
-The existing personal Python virtualenv is deliberately not referenced. Obtain
-`robotframework_ls` through your company's approved Python package source and
-environment. Put its executable on PATH, or add the following to the work Zsh
-config with the actual absolute path, then restart Neovim:
+Ghostty: select terminal text, then press Cmd+C; Cmd+V pastes. Inside mouse-enabled
+terminal applications, hold Shift while dragging to use Ghostty's selection.
+Neovim: `yy` copies a line, `v` then `y` copies a selection, and `p` / `P` paste
+from the system clipboard. Cmd+V also pastes through Ghostty. Cmd+C copies the
+terminal selection, not Neovim's Visual selection: use `y` for the latter.
 
-```sh
-export ROBOTFRAMEWORK_LS="/absolute/path/to/approved/venv/bin/robotframework_ls"
-```
+Neovim uses the built-in macOS `/usr/bin/pbcopy` and `/usr/bin/pbpaste` provider
+with `clipboard=unnamedplus`. No clipboard plugin or extra brew package is needed.
+Normal deletes/changes also write to the clipboard; use `"_dd` to delete a line
+without replacing its contents. Shell pipelines can use `command | pbcopy` and
+`pbpaste`. Ctrl+C keeps its usual interrupt behavior.
 
-The server is enabled only when this executable exists. The base Brewfile does
-not install it: Robot Framework itself and its language server are different
-packages. Helm syntax support also does not install or run Helm automatically.
+This targets Neovim running locally on macOS; remote SSH Neovim needs separate
+clipboard configuration. Robot Framework and its language server are neither
+installed nor configured. Helm syntax support does not install/run Helm.
 
 ### Controlled updates
 

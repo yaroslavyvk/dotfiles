@@ -8,7 +8,13 @@ return {
   { "mfussenegger/nvim-dap", enabled = false },
   { "rcarriga/nvim-dap-ui", enabled = false },
   { "folke/neoconf.nvim", enabled = false },
-  { "AstroNvim/astrocore", opts = { sessions = { autosave = { last = false, cwd = false } } } },
+  {
+    "AstroNvim/astrocore",
+    opts = {
+      options = { opt = { clipboard = "unnamedplus" } },
+      sessions = { autosave = { last = false, cwd = false } },
+    },
+  },
   { "Saghen/blink.cmp", build = false, opts = { fuzzy = { implementation = "lua" } } },
   { "L3MON4D3/LuaSnip", build = false },
   { "max397574/better-escape.nvim", enabled = false },
@@ -29,12 +35,6 @@ return {
         lua_ls = { settings = { Lua = { diagnostics = { globals = { "vim" } }, telemetry = { enable = false } } } },
         pyright = { settings = { python = { analysis = { typeCheckingMode = "basic" } } } },
       }
-      -- Optional approved Robot Framework language server, never installed here.
-      local robot = vim.env.ROBOTFRAMEWORK_LS or "robotframework_ls"
-      if vim.fn.executable(robot) == 1 then
-        table.insert(opts.servers, "robotframework_ls")
-        opts.config.robotframework_ls = { cmd = { robot } }
-      end
     end,
   },
   {
