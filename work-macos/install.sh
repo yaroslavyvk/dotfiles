@@ -4,7 +4,11 @@ set -euo pipefail
 profile_dir="$(cd -- "$(dirname -- "$0")" && pwd)"
 if [[ ${1:-} != --apply || $# != 1 ]]; then
   echo "Usage: bash work-macos/install.sh --apply"
-  echo "Links Zsh, Ghostty and Starship configs into HOME, backing up existing files."
+  echo "Links Zsh, Ghostty, Starship and Neovim configs into HOME, backing up existing files."
+  exit 1
+fi
+if [[ -n ${XDG_CONFIG_HOME:-} && $XDG_CONFIG_HOME != "$HOME/.config" ]]; then
+  echo "This profile expects the default XDG_CONFIG_HOME ($HOME/.config)." >&2
   exit 1
 fi
 if [[ -n ${ZDOTDIR:-} && $ZDOTDIR != "$HOME" ]]; then
@@ -31,6 +35,7 @@ link_config "$profile_dir/zsh/.zprofile" .zprofile
 link_config "$profile_dir/zsh/.zshrc" .zshrc
 link_config "$profile_dir/ghostty/config" .config/ghostty/config
 link_config "$profile_dir/starship/starship.toml" .config/starship/starship.toml
+link_config "$profile_dir/nvim" .config/nvim
 link_config "$profile_dir/ghostty/config" "Library/Application Support/com.mitchellh.ghostty/config.ghostty"
 echo "Backups: $backup_dir"
 echo "Open a new Ghostty window to load the profile."
