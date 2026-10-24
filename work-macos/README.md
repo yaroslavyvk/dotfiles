@@ -6,6 +6,14 @@ No Oh My Zsh, plugin manager, history sync or automatic tmux startup.
 Git completion uses Zsh; Docker completion uses the installed Docker CLI.
 Docker itself is not installed by this profile.
 
+Starship uses the full personal Catppuccin Mocha configuration: OS, username,
+directory, Git branch/status, Kubernetes context/namespace, Docker context, time
+and a second prompt line. It contains no custom command modules. Kubernetes and
+Docker information comes from the work machine's configuration; no personal
+contexts or credentials are included. Context names will be visible on screen.
+The Node.js/Python/Java module settings are preserved, but those modules are not
+referenced by the prompt format, matching the original configuration.
+
 ## Install
 
 Use your company-approved installation channel. The following assumes Homebrew
