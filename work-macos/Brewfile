@@ -1,0 +1,5 @@
+brew "starship"
+brew "eza"
+brew "autojump"
+cask "ghostty"
+cask "font-meslo-lg-nerd-font"

@@ -1,0 +1,10 @@
+# Deliberately limited to directory, Git and command result.
+format = "$directory$git_branch$git_status$character"
+add_newline = false
+
+[directory]
+truncation_length = 3
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
